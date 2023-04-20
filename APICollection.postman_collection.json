@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fabe9209-9e2b-4276-8b47-b387abfca2a8",
+		"_postman_id": "7b54a6ad-05cf-4003-a56b-d489d5223169",
 		"name": "APICollection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26699033"
@@ -16,27 +16,25 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code should be is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"console.log(jsonData.title)\r",
+									"\r",
+									"pm.environment.set(\"Entitytitle\",\"jsonData.title\");\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    \r",
+									"\r",
+									"//console.log(jsonData.paymentCurrency)\r",
+									"\r",
+									"\r",
+									"    pm.expect(jsonData.value).to.eql(100);\r",
 									"});\r",
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});\r",
-									"pm.test(\"Status code name should have OK string\", function () {\r",
-									"    pm.response.to.have.status(\"Created\");\r",
-									"});\r",
-									"pm.test(\"Status code name has string\", function () {\r",
-									"    pm.response.to.have.status(\"STRING\");\r",
-									"});\r",
-									"pm.test(\"Status code name has string\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
-									"});\r",
-									"pm.test(\"Status code name should have OK string\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});"
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -50,23 +48,18 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": ""
 						},
 						"url": {
-							"raw": "https://demo.fusio-project.org/index.php",
-							"protocol": "https",
+							"raw": "{{baseUrl}}?todo",
 							"host": [
-								"demo",
-								"fusio-project",
-								"org"
+								"{{baseUrl}}"
 							],
-							"path": [
-								"index.php"
+							"query": [
+								{
+									"key": "todo",
+									"value": null
+								}
 							]
 						}
 					},
